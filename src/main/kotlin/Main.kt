@@ -1,9 +1,60 @@
 import chapter1.*
+import chapter10.*
 import chapter3.StackMin
+import chapter4.MinimalBST
+import chapter4.ValidateBST
 import others.Fibonacci
+import support.TransverseBST
+import support.WrapInt
 
 fun main(args: Array<String>) {
-    testFibonacci()
+    testSparseSearch()
+}
+
+fun testSparseSearch() {
+    val strings = arrayOf("at", "", "", "boo","")
+    val empty = arrayOf<String>()
+
+    val search1 = SparseSearch.findString(strings, "boo")
+    val search2 = SparseSearch.findString(empty, "at")
+    println(search1)
+    println(search2)
+
+}
+
+fun testsSortedSearch() {
+    val list = intArrayOf(0, 3, 4, 5, 9, 10)
+    val listy = Listy(list)
+    val index = SortedList.search(listy, 14)
+    println(index)
+
+}
+
+fun testAnagram() {
+    val strArr = arrayOf("cat", "cat", "vim", "tac","atc", "miv" )
+    // val arr = GroupAnagrams.groupAnagram(strArr)
+    val arr2 = GroupAnagrams.groupAnagramsV2(strArr)
+    //println(arr.contentToString())
+    println(arr2)
+}
+
+fun testSortedMerge() {
+    val arrA = IntArray(7)
+    arrA[0] = 2
+    arrA[1] = 4
+    arrA[2] = 8
+    arrA[3] = 10
+
+    println(arrA.contentToString())
+
+    val arrB = intArrayOf(2, 9, 16)
+    println(arrB.contentToString())
+
+
+    val sorted = SortedMerge.merge(arrA, arrB, 4, 3)
+
+    println(arrA.contentToString())
+    println(sorted.contentToString())
 }
 
 fun testFibonacci() {
@@ -101,6 +152,35 @@ fun testMinStack() {
 
     println(StackMin.pop())
     println(StackMin.min())
+}
+
+fun testMinBst() {
+    val input = intArrayOf(1, 4, 6, 9, 15, 20, 170)
+    // val input = intArrayOf(1,3)
+
+    val tree = MinimalBST.getMinTree(input)
+    println(tree)
+    val traversalList = TransverseBST.traverseDFS(tree)
+    println("DFS: $traversalList")
+
+    val traversalList2 = TransverseBST.traverseBFS(tree)
+    println("BFS: $traversalList2")
+}
+
+fun testIsTreeBST() {
+    // val input = intArrayOf(1, 4, 6, 9, 15, 20, 170) //true
+    val input = intArrayOf(1, 4, 14, 9, 15, 20, 170) //false
+
+    val tree = MinimalBST.getMinTree(input)
+    println(tree)
+
+    // val result = ValidateBST.validateTree(tree)
+    // val result = ValidateBST.validateTree2(tree)
+    // val result = ValidateBST.validateTree3(tree, WrapInt())
+    val result = ValidateBST.validateTreeV4(tree)
+
+    println(result)
+
 }
 
 fun test() {

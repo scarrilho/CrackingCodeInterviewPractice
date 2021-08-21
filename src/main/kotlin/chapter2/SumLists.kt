@@ -1,5 +1,7 @@
 package chapter2
 
+import support.ListNode
+
 object SumLists {
     fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
         return addTwoNumbers(l1, l2, 0)
