@@ -1,14 +1,80 @@
 import chapter1.*
 import chapter10.*
 import chapter3.StackMin
-import chapter4.MinimalBST
-import chapter4.ValidateBST
+import chapter4.*
+import others.BinarySearch
 import others.Fibonacci
 import support.TransverseBST
-import support.WrapInt
 
 fun main(args: Array<String>) {
-    testSparseSearch()
+    testRouteBetweenNodes()
+}
+
+fun testRouteBetweenNodes() {
+    val looseNode = GNode("z", 0)
+
+    val g: Graph = createGraph()
+    val n: Array<GNode?> = g.getNodes()
+    val start: GNode? = n[3]
+    // val end: GNode? = n[5]
+    val end: GNode? = looseNode
+
+
+    if (g != null && start != null  && end != null) {
+        // val isPathExist = RouteBetweenNodes.findViaBFS(g, start, end)
+        val isPathExist = RouteBetweenNodes.findViaBFS(g, start, end)
+        println(isPathExist)
+    } else {
+        println("No path exists")
+    }
+
+
+}
+
+fun createGraph(): Graph {
+    val g = Graph()
+    val temp: Array<GNode?> = arrayOfNulls<GNode>(6)
+
+    temp[0] = GNode("a", 3)
+    temp[1] = GNode("b", 0)
+    temp[2] = GNode("c", 0)
+    temp[3] = GNode("d", 1)
+    temp[4] = GNode("e", 1)
+    temp[5] = GNode("f", 0)
+
+    temp[0]?.addAdjacent(temp[1])
+    temp[0]?.addAdjacent(temp[2])
+    temp[0]?.addAdjacent(temp[3])
+    temp[3]?.addAdjacent(temp[4])
+    temp[4]?.addAdjacent(temp[5])
+    for (i in 0..5) {
+        g.addNode(temp[i])
+    }
+    return g
+}
+
+fun testSeachMatrix() {
+    var matrix: Array<IntArray> = Array(4) { IntArray(4) }
+    var row1 = intArrayOf(15, 20, 40, 85)
+    var row2 = intArrayOf(20, 35, 80, 95)
+    var row3 = intArrayOf(30, 55, 95, 105)
+    var row4 = intArrayOf(40, 80, 100, 120)
+
+    matrix[0] = row1
+    matrix[1] = row2
+    matrix[2] = row3
+    matrix[3] = row4
+
+    // val index = SortedMatrixSearch.findElementNaive(matrix, 95)
+    val index2 = SortedMatrixSearch.findElement(matrix, 80)
+    println(index2)
+
+}
+
+fun testBinarySearch() {
+    val array = intArrayOf(0,4,12,15,20,25,35,40) // sorted array
+    val result = BinarySearch.search(array, 20)
+    println(result)
 }
 
 fun testSparseSearch() {
@@ -19,7 +85,6 @@ fun testSparseSearch() {
     val search2 = SparseSearch.findString(empty, "at")
     println(search1)
     println(search2)
-
 }
 
 fun testsSortedSearch() {

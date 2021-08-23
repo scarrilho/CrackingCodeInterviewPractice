@@ -15,6 +15,9 @@ object MiscOperations {
         val charArrayTest = testString.toCharArray()
         val backToString = charArrayTest.joinToString { "" }
 
+        println(charArrayTest.contentToString())
+
+
         // String builder
         val resultString = StringBuilder()
         resultString.append('H')
@@ -27,6 +30,13 @@ object MiscOperations {
         // filter
         val phraseCharsOnly = testString.filter{ it.isLetter() }.lowercase()
         val phraseCharsAndDigits = testString.filter{ it.isLetterOrDigit() }.lowercase()
+    }
+
+    fun createdTwoDArrays() {
+        val height =3
+        val width = 4
+        var matrix: Array<IntArray> = Array(height) { IntArray(width) }
+
     }
 
     fun hashMapOps() {
